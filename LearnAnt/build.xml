@@ -2,14 +2,25 @@
     <target name="init">
       <property name="sourceDir" value="src" />
       <property name="outputDir" value="classes" />
+      <property name="binaries" value="binaries" />
     </target>
     <target name="clean" depends="init">
        <deltree dir="${outputDir}" />
     </target>
     <target name="prepare" depends="clean">
        <mkdir dir="${outputDir}" />
+       <mkdir dir="${binaries}" />
     </target>
     <target name="compile" depends="prepare">
       <javac srcdir="${sourceDir}" destdir="${outputDir}" />
     </target>
+    <target name="build-jar" depends="compile">
+        <jar destfile="${binaries}/app.jar"
+           basedir="${outputDir}">
+           <manifest>
+              <attribute name="Main-Class" value="com.learnant.LearnAnt"/>
+           </manifest>
+        </jar>
+    </target>
+    
 </project>
