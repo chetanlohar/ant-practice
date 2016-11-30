@@ -6,6 +6,7 @@
     </target>
     <target name="clean" depends="init">
        <deltree dir="${outputDir}" />
+       <deltree dir="${binaries}" />
     </target>
     <target name="prepare" depends="clean">
        <mkdir dir="${outputDir}" />
